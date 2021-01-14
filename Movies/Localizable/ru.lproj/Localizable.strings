@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  Movies
+
+  Created by Administrator on 14.01.2021.
+  Copyright © 2021 Administrator. All rights reserved.
+*/
+
+"Popular" = "Популярное";
+"Rating:" = "Рейтинг:";
+"Language:" = "Страна:";
+"Show trailer" = "Показать трейлер";
+"info" = "Информация";
+"no trailer" = "Трейлер отсутствует";
+"Cancel" = "Закрыть";

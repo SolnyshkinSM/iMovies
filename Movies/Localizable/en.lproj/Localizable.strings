@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  Movies
+
+  Created by Administrator on 14.01.2021.
+  Copyright © 2021 Administrator. All rights reserved.
+*/
+
+"Popular" = "Popular";
+"Rating:" = "Rating:";
+"Language:" = "Language:";
+"Show trailer" = "Show trailer";
+"info" = "info";
+"no trailer" = "no trailer";
+"Cancel" = "Cancel";

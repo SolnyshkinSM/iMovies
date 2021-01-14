@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Movies
+
+  Created by Administrator on 14.01.2021.
+  Copyright © 2021 Administrator. All rights reserved.
+*/
+
+"CFBundleDisplayName" = "Мои видео";
+"NSHumanReadableCopyright" = "2021 Сергей Солнышкин. Все права защищены.";

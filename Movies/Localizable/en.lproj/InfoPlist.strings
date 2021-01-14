@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Movies
+
+  Created by Administrator on 14.01.2021.
+  Copyright © 2021 Administrator. All rights reserved.
+*/
+
+"CFBundleDisplayName" = "iMovies";
+"NSHumanReadableCopyright" = "2021 Sergey Solnyshkin. All rights reserved.";
