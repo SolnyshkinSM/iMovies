@@ -31,19 +31,7 @@ final class MovieViewController: UIViewController {
                 
         setupViews()
         setupBinding()
-        
-        
-        let screensaver = UIImageView(frame: view.bounds)
-        screensaver.backgroundColor = .white
-        screensaver.contentMode = .center
-        screensaver.image = UIImage(named: "logo")
-        screensaver.clipsToBounds = true
-        view.addSubview(screensaver)
-        
-        UIView.animate(withDuration: 3) {
-            screensaver.alpha = 0
-            self.navigationController?.navigationBar.alpha = 1
-        }
+        setupScreenSaver()
     }
     
     // MARK: - Private methods
@@ -77,6 +65,21 @@ private extension MovieViewController {
     
     func setupBinding() {
         loadData()
+    }
+    
+    func setupScreenSaver() {
+        
+        let screensaver = UIImageView(frame: view.bounds)
+        screensaver.backgroundColor = .white
+        screensaver.contentMode = .center
+        screensaver.image = UIImage(named: "logo")
+        screensaver.clipsToBounds = true
+        view.addSubview(screensaver)
+        
+        UIView.animate(withDuration: 3) {
+            screensaver.alpha = 0
+            self.navigationController?.navigationBar.alpha = 1
+        }
     }
 }
 

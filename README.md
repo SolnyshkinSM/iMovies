@@ -1,8 +1,6 @@
-# Movies
+# iMovies
 
-Movies - Application for watching movies at https://www.themoviedb.org/.
-
-Фильмы.
+iMovies - Application for watching movies at https://www.themoviedb.org/.
 
 Фильмы - Приложение для просмотра фильмов на https://www.themoviedb.org/.
 
@@ -14,21 +12,36 @@ https://youtu.be/XBHsc7oJgv8
 
 Used:
 - Swift
+- Protocols
+- Extension
 - DispatchQueue
+- Program Interface
 - Autolayout
 - MVC
 - JSON
-
+- Localizable
 
 UIKit:
-- UITabBarController
+- UIViewController
 - UITableViewController
 - UITableViewCell
-- UIRefreshControl
+- UIStackView
+- UICollectionView
+- UICollectionViewCell
+- Basic UIView Animation
+- UIBlurEffect
 - UIAlertController
 
 Foundation:
+- URLSession
+- DateFormatter
 - Timer
 
-Framework:
-- Charts
+SafariServices:
+- SFSafariViewController
+
+Pattern:
+- Coordinator
+
+API:
+- https://developers.themoviedb.org/    

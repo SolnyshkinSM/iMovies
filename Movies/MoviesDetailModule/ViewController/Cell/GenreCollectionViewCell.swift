@@ -34,7 +34,6 @@ final class GenreCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 // MARK: - Setupes
@@ -73,8 +72,6 @@ private extension GenreCollectionViewCell {
         infoLabel.font = .boldSystemFont(ofSize: 10)
         infoLabel.textAlignment = .center
         infoLabel.textColor = .white
-        //infoLabel.adjustsFontSizeToFitWidth = true
-        //infoLabel.minimumScaleFactor = 0.1
         infoLabel.sizeToFit()
     }
 }
@@ -99,6 +96,5 @@ private extension GenreCollectionViewCell {
         let collectionView = [infoLabel]
         
         collectionView.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
-                
     }
 }

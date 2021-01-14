@@ -87,6 +87,7 @@ final class MovieDetailViewController: UIViewController {
     }
     
     private func set(detailModel: DetailModel) {
+        
         setInfo(object: detailModel)
         setOverview(object: detailModel)
         setRunTime(object: detailModel)
@@ -186,6 +187,7 @@ private extension MovieDetailViewController {
     }
     
     func setupBinding() {
+        
         loadDetails()
         loadTrailers()
     }
@@ -197,7 +199,6 @@ private extension MovieDetailViewController {
     
     func setupContentView() {
         view.backgroundColor = .white
-        //navigationController?.navigationBar.tintColor = .white
     }
     
     func addViews() {
@@ -260,20 +261,13 @@ private extension MovieDetailViewController {
     func configureInfoLabel() {
         infoLabel.font = .boldSystemFont(ofSize: 20)
         infoLabel.textAlignment = .center
-        //infoLabel.textColor = .white
         infoLabel.numberOfLines = 0
-        //infoLabel.adjustsFontSizeToFitWidth = true
-        //infoLabel.minimumScaleFactor = 0.1
         infoLabel.sizeToFit()
     }
     
     func configureOverviewLabel() {
-        //overviewLabel.font = .boldSystemFont(ofSize: 20)
-        //overviewLabel.textAlignment = .center
         overviewLabel.textColor = .gray
         overviewLabel.numberOfLines = 0
-        //overviewLabel.adjustsFontSizeToFitWidth = true
-        //overviewLabel.minimumScaleFactor = 0.1
         overviewLabel.sizeToFit()
     }
     
@@ -288,7 +282,6 @@ private extension MovieDetailViewController {
     }
     
     func configureTrailerButton() {
-        //trailerButton.setTitleColor(.white, for: .normal)
         trailerButton.titleLabel?.font = .boldSystemFont(ofSize: 20)
         trailerButton.sizeToFit()
         trailerButton.layer.cornerRadius = trailerButton.bounds.height / 2
@@ -300,7 +293,6 @@ private extension MovieDetailViewController {
         trailerButton.layer.borderColor = UIColor.white.cgColor
         
         trailerButton.addTarget(self, action: #selector(pressedTrailerButton(_:)), for: .touchUpInside)
-        
     }
 }
 
@@ -336,9 +328,6 @@ private extension MovieDetailViewController {
                 equalToConstant: minWidth * 0.7),
             posterImageView.widthAnchor.constraint(
                 equalToConstant: minWidth * 0.46),
-            /*posterImageView.bottomAnchor.constraint(
-                equalTo: view.bottomAnchor,
-                constant: -10)*/
         ])
 
         NSLayoutConstraint.activate([
@@ -365,26 +354,14 @@ private extension MovieDetailViewController {
                 multiplier: 0.2),
             starImageView.widthAnchor.constraint(
                 equalTo: starImageView.heightAnchor),
-            /*starImageView.bottomAnchor.constraint(
-                equalTo: bottomAnchor,
-                constant: -10)*/
         ])
         
         NSLayoutConstraint.activate([
-            /*ratingLabel.topAnchor.constraint(
-                equalTo: infoLabel.bottomAnchor,
-                constant: 10),*/
             ratingLabel.centerYAnchor.constraint(
                 equalTo: starImageView.centerYAnchor),
             ratingLabel.leadingAnchor.constraint(
                 equalTo: starImageView.trailingAnchor,
                 constant: 0),
-            /*ratingLabel.trailingAnchor.constraint(
-                equalTo: area.trailingAnchor,
-                constant: -10),*/
-            /*ratingLabel.bottomAnchor.constraint(
-                equalTo: bottomAnchor,
-                constant: -10)*/
         ])
         
         NSLayoutConstraint.activate([
@@ -399,15 +376,9 @@ private extension MovieDetailViewController {
                 multiplier: 0.2),
             clockImageView.widthAnchor.constraint(
                 equalTo: starImageView.heightAnchor),
-            /*clockImageView.bottomAnchor.constraint(
-                equalTo: bottomAnchor,
-                constant: -10)*/
         ])
         
         NSLayoutConstraint.activate([
-            /*runTimeLabel.topAnchor.constraint(
-                equalTo: infoLabel.bottomAnchor,
-                constant: 10),*/
             runTimeLabel.centerYAnchor.constraint(
                 equalTo: clockImageView.centerYAnchor),
             runTimeLabel.leadingAnchor.constraint(
@@ -416,17 +387,12 @@ private extension MovieDetailViewController {
             runTimeLabel.trailingAnchor.constraint(
                 equalTo: area.trailingAnchor,
                 constant: -10),
-            /*runTimeLabel.bottomAnchor.constraint(
-                equalTo: bottomAnchor,
-                constant: -10)*/
         ])
         
         NSLayoutConstraint.activate([
             genresCollectionView.topAnchor.constraint(
                 equalTo: starImageView.bottomAnchor,
                 constant: 10),
-            /*genresCollectionView.centerYAnchor.constraint(
-                equalTo: clockImageView.centerYAnchor),*/
             genresCollectionView.leadingAnchor.constraint(
                 equalTo: posterImageView.trailingAnchor,
                 constant: 10),
@@ -435,9 +401,6 @@ private extension MovieDetailViewController {
                 constant: -10),
             genresCollectionView.heightAnchor.constraint(
                 equalToConstant: 22)
-            /*genresCollectionView.bottomAnchor.constraint(
-                equalTo: bottomAnchor,
-                constant: -10)*/
         ])
         
         var overviewConstraint = [NSLayoutConstraint]()
@@ -453,9 +416,6 @@ private extension MovieDetailViewController {
             ]
         } else {
             overviewConstraint += [
-                /*overviewLabel.topAnchor.constraint(
-                    equalTo: genresCollectionView.bottomAnchor,
-                    constant: 10),*/
                 overviewLabel.leadingAnchor.constraint(
                     equalTo: posterImageView.trailingAnchor,
                     constant: 10)
