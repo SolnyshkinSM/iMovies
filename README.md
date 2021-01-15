@@ -31,6 +31,7 @@ UIKit:
 - Basic UIView Animation
 - UIBlurEffect
 - UIAlertController
+- UIRefreshControl
 
 Foundation:
 - URLSession

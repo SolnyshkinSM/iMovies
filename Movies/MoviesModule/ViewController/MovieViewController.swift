@@ -18,6 +18,12 @@ final class MovieViewController: UIViewController {
     
     // MARK: - Private properties
     
+    private var numberPage = 1 {
+        didSet {
+            loadData()
+        }
+    }
+    
     private let networkLayer = NetworkLayer()
     
     private lazy var results = Results()
@@ -38,7 +44,7 @@ final class MovieViewController: UIViewController {
     
     private func loadData() {
         
-        if let url = URL(string: Url.urlPopularMovies) {
+        if let url = URL(string: Url.urlPopularMovies + "&page=\(numberPage)") {
             networkLayer.getData(url: url) { [weak self] (items: Results) in
                 
                 guard let self = self else { return }
@@ -50,6 +56,11 @@ final class MovieViewController: UIViewController {
             }
         }
     }
+    
+    @objc private func refreshMovieTableView() {
+        numberPage += 1
+        movieTableView.refreshControl?.endRefreshing()
+    }
 }
 
 // MARK: - Setupes
@@ -59,6 +70,7 @@ private extension MovieViewController {
     func setupViews() {
         addViews()
         setupTableView()
+        setupRefreshControl()
         configureNavigationController()
         layout()
     }
@@ -97,6 +109,14 @@ private extension MovieViewController {
         movieTableView.rowHeight = UITableView.automaticDimension
         movieTableView.separatorStyle = .none
         movieTableView.register(MovieTableViewCell.self, forCellReuseIdentifier: Cells.movieCells)
+    }
+    
+    func setupRefreshControl() {
+        
+        movieTableView.refreshControl = UIRefreshControl()
+        movieTableView.refreshControl?.backgroundColor = .white
+        movieTableView.refreshControl?.tintColor = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1)
+        movieTableView.refreshControl?.addTarget(self, action: #selector(refreshMovieTableView), for: .valueChanged)
     }
     
     func configureNavigationController() {
