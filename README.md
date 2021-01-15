@@ -8,7 +8,7 @@ iMovies - Application for watching movies at https://www.themoviedb.org/.
 
 ![alt text](Overview.gif "Обзор")
 
-https://youtu.be/XBHsc7oJgv8
+https://youtu.be/P0A4naBgteU
 
 Used:
 - Swift

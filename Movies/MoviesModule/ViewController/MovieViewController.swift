@@ -177,6 +177,14 @@ extension MovieViewController: UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        cell.transform = CGAffineTransform(translationX: movieTableView.bounds.size.width, y: 0)
+        UIView.animate(withDuration: 1.5, delay: 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
+            cell.transform = CGAffineTransform(translationX: 0, y: 0)
+        }, completion: nil)
+    }
+    
 }
 
 // MARK: - Constants
