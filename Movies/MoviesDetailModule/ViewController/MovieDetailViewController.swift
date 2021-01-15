@@ -17,6 +17,8 @@ final class MovieDetailViewController: UIViewController {
     
     var selectIdTwo = Int()
     
+    var movie: Movie?
+    
     // MARK: - Private properties
     
     private let networkLayer = NetworkLayer()
@@ -136,9 +138,9 @@ final class MovieDetailViewController: UIViewController {
         
         if let posterPath = object.poster_path,
             let url = URL(string: Url.urlPoster + posterPath) {
-            backgroundImageView.loadData(url: url)
+            backgroundImageView.loadData(url: url, forMovie: movie)
             backgroundImageView.toApplyBlurEffect()
-            posterImageView.loadData(url: url)
+            posterImageView.loadData(url: url, forMovie: movie)
         }
     }
     

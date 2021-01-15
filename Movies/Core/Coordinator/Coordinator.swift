@@ -47,10 +47,11 @@ final class Coordinator: ICoordinator {
 
 extension Coordinator: IMoviesCoordinator {
     
-    func goToMoviesDetailViewController(id: Int) {
+    func goToMoviesDetailViewController(id: Int, movie: Movie) {
         
         let viewController = MovieDetailViewController()
         viewController.selectIdTwo = id
+        viewController.movie = movie
         navigationController.pushViewController(viewController, animated: true)
     }
 }

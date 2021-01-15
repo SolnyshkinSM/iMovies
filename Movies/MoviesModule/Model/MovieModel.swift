@@ -18,7 +18,7 @@ struct Results: Decodable {
 
 // MARK: - Movie
 
-struct Movie: Decodable {
+class Movie: Decodable {
     
     var id: Int?
     var title: String?

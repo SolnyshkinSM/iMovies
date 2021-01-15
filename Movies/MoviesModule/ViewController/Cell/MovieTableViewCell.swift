@@ -102,11 +102,14 @@ final class MovieTableViewCell: UITableViewCell {
     
     private func setPoster(movie: Movie) {
         
-        posterImageView.image = nil
-        
-        if let posterPath = movie.poster_path,
-            let url = URL(string: Url.urlPoster + posterPath) {
-            posterImageView.loadData(url: url)
+        if let image = cacheImage.object(forKey: movie) {
+            posterImageView.image = image as? UIImage
+        } else {
+            
+            if let posterPath = movie.poster_path,
+                let url = URL(string: Url.urlPoster + posterPath) {
+                posterImageView.loadData(url: url, forMovie: movie)
+            }
         }
     }
 }

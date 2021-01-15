@@ -17,6 +17,7 @@
 		C322B8A625AD910600422696 /* MovieDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322B8A525AD910600422696 /* MovieDetailModel.swift */; };
 		C322B8A825AD912200422696 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322B8A725AD912200422696 /* MovieModel.swift */; };
 		C322B8AA25ADD62000422696 /* MovieTrailerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322B8A925ADD62000422696 /* MovieTrailerModel.swift */; };
+		C338B46C25B190C20061A2B0 /* CacheImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C338B46B25B190C20061A2B0 /* CacheImage.swift */; };
 		C33C5B2F25B015DB00EB479E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C33C5B3125B015DB00EB479E /* Localizable.strings */; };
 		C33C5B3525B016EE00EB479E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C33C5B3725B016EE00EB479E /* InfoPlist.strings */; };
 		C34757D725AB107000478AAB /* ICoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34757D625AB107000478AAB /* ICoordinator.swift */; };
@@ -42,6 +43,7 @@
 		C322B8A525AD910600422696 /* MovieDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailModel.swift; sourceTree = "<group>"; };
 		C322B8A725AD912200422696 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		C322B8A925ADD62000422696 /* MovieTrailerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTrailerModel.swift; sourceTree = "<group>"; };
+		C338B46B25B190C20061A2B0 /* CacheImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheImage.swift; sourceTree = "<group>"; };
 		C33C5B2B25B014FE00EB479E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		C33C5B3025B015DB00EB479E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C33C5B3225B015E100EB479E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -117,6 +119,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C338B46A25B190A70061A2B0 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				C338B46B25B190C20061A2B0 /* CacheImage.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
 		C33C5B2C25B0155D00EB479E /* Localizable */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +141,7 @@
 			children = (
 				C34757DC25AB1FE900478AAB /* NetworkLayer */,
 				C34757D525AB102600478AAB /* Coordinator */,
+				C338B46A25B190A70061A2B0 /* Cache */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -320,6 +331,7 @@
 				C30F21DB25A74B9800EE1CC4 /* SceneDelegate.swift in Sources */,
 				C34757DB25AB125A00478AAB /* IMoviesCoordinator.swift in Sources */,
 				C30F21EF25A7524A00EE1CC4 /* MovieTableViewCell.swift in Sources */,
+				C338B46C25B190C20061A2B0 /* CacheImage.swift in Sources */,
 				C3A48AF925AA21B400A6500D /* MovieDetailViewController.swift in Sources */,
 				C34757E225AB25BB00478AAB /* Url.swift in Sources */,
 				C30F21ED25A74BE000EE1CC4 /* MovieViewController.swift in Sources */,

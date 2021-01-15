@@ -36,6 +36,7 @@ UIKit:
 Foundation:
 - URLSession
 - DateFormatter
+- NSCache
 - Timer
 
 SafariServices:

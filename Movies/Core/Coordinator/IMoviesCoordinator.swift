@@ -9,5 +9,5 @@
 // MARK: - IMoviesCoordinator
 
 protocol IMoviesCoordinator {
-    func goToMoviesDetailViewController(id: Int)
+    func goToMoviesDetailViewController(id: Int, movie: Movie)
 }

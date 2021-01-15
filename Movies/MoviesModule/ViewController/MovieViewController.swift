@@ -169,8 +169,9 @@ extension MovieViewController: UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
    
-        if let id = results.results?[indexPath.row].id {
-            coordinator?.goToMoviesDetailViewController(id: id)
+        if let movie = results.results?[indexPath.row],
+            let id = movie.id {
+            coordinator?.goToMoviesDetailViewController(id: id, movie: movie)
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
