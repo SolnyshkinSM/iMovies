@@ -18,11 +18,7 @@ final class MovieViewController: UIViewController {
     
     // MARK: - Private properties
     
-    private var numberPage = 1 {
-        didSet {
-            loadData()
-        }
-    }
+    private var numberPage = 1 { didSet { loadData() } }
     
     private let networkLayer = NetworkLayer()
     
