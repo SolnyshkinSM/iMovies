@@ -23,6 +23,8 @@ final class MovieTableViewCell: UITableViewCell {
     private let voteLabel = UILabel()
     private let ratingLabel = UILabel()
     
+    private lazy var collectionView = [posterImageView, flagImageView, starImageView, ratingLabel]
+        
     // MARK: - Initialization
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -155,10 +157,7 @@ private extension MovieTableViewCell {
     }
     
     func addViews() {
-        addSubview(posterImageView)
-        addSubview(flagImageView)
-        addSubview(starImageView)
-        addSubview(ratingLabel)
+        collectionView.forEach(addSubview)
     }
     
     func configureTitleLabel() {
@@ -216,8 +215,10 @@ private extension MovieTableViewCell {
 private extension MovieTableViewCell {
     
     func layout() {
+        
+        var overviewConstraint = [NSLayoutConstraint]()
                 
-        NSLayoutConstraint.activate([
+        overviewConstraint += [
             posterImageView.topAnchor.constraint(
                 equalTo: topAnchor,
                 constant: 10),
@@ -231,7 +232,7 @@ private extension MovieTableViewCell {
             posterImageView.bottomAnchor.constraint(
                 equalTo: bottomAnchor,
                 constant: -10)
-        ])
+        ]
                 
         let stackViewTitle = UIStackView(arrangedSubviews: [titleLabel, releaseDateLabel])
         stackViewTitle.axis = .vertical
@@ -239,7 +240,7 @@ private extension MovieTableViewCell {
         stackViewTitle.spacing = 10
         addSubview(stackViewTitle)
         
-        NSLayoutConstraint.activate([
+        overviewConstraint += [
             stackViewTitle.topAnchor.constraint(
                 equalTo: topAnchor,
                 constant: 30),
@@ -249,7 +250,7 @@ private extension MovieTableViewCell {
             stackViewTitle.trailingAnchor.constraint(
                 equalTo: trailingAnchor,
                 constant: -10)
-        ])
+        ]
         
         let stackViewDetail = UIStackView(arrangedSubviews: [languageLabel, voteLabel])
         stackViewDetail.alignment = .center
@@ -257,16 +258,16 @@ private extension MovieTableViewCell {
         stackViewDetail.distribution = .fillEqually
         addSubview(stackViewDetail)
         
-        NSLayoutConstraint.activate([
+        overviewConstraint += [
             stackViewDetail.leadingAnchor.constraint(
                 equalTo: posterImageView.trailingAnchor,
                 constant: 10),
             stackViewDetail.trailingAnchor.constraint(
                 equalTo: trailingAnchor,
                 constant: -10)
-        ])
+        ]
         
-        NSLayoutConstraint.activate([
+        overviewConstraint += [
             flagImageView.topAnchor.constraint(
                 equalTo: stackViewDetail.bottomAnchor,
                 constant: 0),
@@ -281,9 +282,9 @@ private extension MovieTableViewCell {
             flagImageView.bottomAnchor.constraint(
                 equalTo: bottomAnchor,
                 constant: -10)
-        ])
+        ]
         
-        NSLayoutConstraint.activate([
+        overviewConstraint += [
             starImageView.topAnchor.constraint(
                 equalTo: stackViewDetail.bottomAnchor,
                 constant: 0),
@@ -298,9 +299,9 @@ private extension MovieTableViewCell {
             starImageView.bottomAnchor.constraint(
                 equalTo: bottomAnchor,
                 constant: -10)
-        ])
+        ]
         
-        NSLayoutConstraint.activate([
+        overviewConstraint += [
             ratingLabel.topAnchor.constraint(
                 equalTo: stackViewDetail.bottomAnchor,
                 constant: 0),
@@ -313,9 +314,12 @@ private extension MovieTableViewCell {
             ratingLabel.bottomAnchor.constraint(
                 equalTo: bottomAnchor,
                 constant: -10)
-        ])
-                
-        let collectionView = [posterImageView, stackViewTitle, stackViewDetail, flagImageView, starImageView, ratingLabel]
+        ]
+         
+        NSLayoutConstraint.activate(overviewConstraint)
+        
+        collectionView.append(stackViewTitle)
+        collectionView.append(stackViewDetail)
         
         collectionView.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
                 

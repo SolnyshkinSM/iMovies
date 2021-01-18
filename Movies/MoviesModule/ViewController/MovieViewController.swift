@@ -129,8 +129,6 @@ private extension MovieViewController {
     
     func layout() {
         
-        movieTableView.translatesAutoresizingMaskIntoConstraints = false
-        
         let area = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
@@ -139,6 +137,10 @@ private extension MovieViewController {
             movieTableView.leadingAnchor.constraint(equalTo: area.leadingAnchor),
             movieTableView.trailingAnchor.constraint(equalTo: area.trailingAnchor)
         ])
+        
+        let collectionView = [movieTableView]
+        
+        collectionView.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
     }
 }
 
@@ -151,7 +153,7 @@ extension MovieViewController: UITableViewDelegate {}
 extension MovieViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results.results?.count ?? Constants.zero
+        return results.results?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -169,8 +171,7 @@ extension MovieViewController: UITableViewDataSource {
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
    
-        if let movie = results.results?[indexPath.row],
-            let id = movie.id {
+        if let movie = results.results?[indexPath.row], let id = movie.id {
             coordinator?.goToMoviesDetailViewController(id: id, movie: movie)
         }
         
@@ -192,7 +193,6 @@ extension MovieViewController: UITableViewDataSource {
 private extension MovieViewController {
     
     enum Constants {
-        static let zero = 0
         static let title = NSLocalizedString("Popular", comment: "")
     }
     

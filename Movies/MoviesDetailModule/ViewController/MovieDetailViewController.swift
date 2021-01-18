@@ -24,9 +24,7 @@ final class MovieDetailViewController: UIViewController {
     private let networkLayer = NetworkLayer()
     
     private var movieDetail: DetailModel! {
-        didSet {
-            set(detailModel: movieDetail)
-        }
+        didSet { set(detailModel: movieDetail) }
     }
     
     private var trailers: Trailers!
@@ -44,10 +42,13 @@ final class MovieDetailViewController: UIViewController {
     private let ratingLabel = UILabel()
     private let trailerButton = UIButton()
     
+    private lazy var collectionView = [backgroundImageView, posterImageView, starImageView, infoLabel, clockImageView, runTimeLabel, ratingLabel, overviewLabel, trailerButton]
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupViews()
         setupBinding()
     }
@@ -204,15 +205,7 @@ private extension MovieDetailViewController {
     }
     
     func addViews() {
-        view.addSubview(backgroundImageView)
-        view.addSubview(posterImageView)
-        view.addSubview(starImageView)
-        view.addSubview(infoLabel)
-        view.addSubview(clockImageView)
-        view.addSubview(runTimeLabel)
-        view.addSubview(ratingLabel)
-        view.addSubview(overviewLabel)
-        view.addSubview(trailerButton)
+        collectionView.forEach(view.addSubview)
     }
     
     func configureBackgroundImageView() {
@@ -305,8 +298,10 @@ private extension MovieDetailViewController {
     func layout() {
         
         let area = view.safeAreaLayoutGuide
+        let minWidth = min(view.bounds.width, view.bounds.height)
+        var overviewConstraint = [NSLayoutConstraint]()
         
-        NSLayoutConstraint.activate([
+        overviewConstraint += [
             backgroundImageView.topAnchor.constraint(
                 equalTo: view.topAnchor),
             backgroundImageView.leadingAnchor.constraint(
@@ -315,11 +310,9 @@ private extension MovieDetailViewController {
                 equalTo: view.trailingAnchor),
             backgroundImageView.bottomAnchor.constraint(
                 equalTo: view.bottomAnchor)
-        ])
+        ]
         
-        let minWidth = min(view.bounds.width, view.bounds.height)
-        
-        NSLayoutConstraint.activate([
+        overviewConstraint += [
             posterImageView.topAnchor.constraint(
                 equalTo: area.topAnchor,
                 constant: 10),
@@ -330,9 +323,9 @@ private extension MovieDetailViewController {
                 equalToConstant: minWidth * 0.7),
             posterImageView.widthAnchor.constraint(
                 equalToConstant: minWidth * 0.46),
-        ])
+        ]
 
-        NSLayoutConstraint.activate([
+        overviewConstraint += [
             infoLabel.topAnchor.constraint(
                 equalTo: area.topAnchor,
                 constant: 10),
@@ -342,9 +335,9 @@ private extension MovieDetailViewController {
             infoLabel.trailingAnchor.constraint(
                 equalTo: area.trailingAnchor,
                 constant: -10)
-        ])
+        ]
         
-        NSLayoutConstraint.activate([
+        overviewConstraint += [
             starImageView.topAnchor.constraint(
                 equalTo: infoLabel.bottomAnchor,
                 constant: 10),
@@ -356,17 +349,17 @@ private extension MovieDetailViewController {
                 multiplier: 0.2),
             starImageView.widthAnchor.constraint(
                 equalTo: starImageView.heightAnchor),
-        ])
+        ]
         
-        NSLayoutConstraint.activate([
+        overviewConstraint += [
             ratingLabel.centerYAnchor.constraint(
                 equalTo: starImageView.centerYAnchor),
             ratingLabel.leadingAnchor.constraint(
                 equalTo: starImageView.trailingAnchor,
                 constant: 0),
-        ])
+        ]
         
-        NSLayoutConstraint.activate([
+        overviewConstraint += [
             clockImageView.topAnchor.constraint(
                 equalTo: infoLabel.bottomAnchor,
                 constant: 10),
@@ -378,9 +371,9 @@ private extension MovieDetailViewController {
                 multiplier: 0.2),
             clockImageView.widthAnchor.constraint(
                 equalTo: starImageView.heightAnchor),
-        ])
+        ]
         
-        NSLayoutConstraint.activate([
+        overviewConstraint += [
             runTimeLabel.centerYAnchor.constraint(
                 equalTo: clockImageView.centerYAnchor),
             runTimeLabel.leadingAnchor.constraint(
@@ -389,9 +382,9 @@ private extension MovieDetailViewController {
             runTimeLabel.trailingAnchor.constraint(
                 equalTo: area.trailingAnchor,
                 constant: -10),
-        ])
+        ]
         
-        NSLayoutConstraint.activate([
+        overviewConstraint += [
             genresCollectionView.topAnchor.constraint(
                 equalTo: starImageView.bottomAnchor,
                 constant: 10),
@@ -403,9 +396,7 @@ private extension MovieDetailViewController {
                 constant: -10),
             genresCollectionView.heightAnchor.constraint(
                 equalToConstant: 22)
-        ])
-        
-        var overviewConstraint = [NSLayoutConstraint]()
+        ]
         
         if UIDevice.current.orientation == .portrait || UIDevice.current.orientation == .unknown {
             overviewConstraint += [
@@ -430,9 +421,7 @@ private extension MovieDetailViewController {
                 constant: -10)
         ]
         
-        NSLayoutConstraint.activate(overviewConstraint)
-
-        NSLayoutConstraint.activate([
+        overviewConstraint += [
             trailerButton.topAnchor.constraint(
                 greaterThanOrEqualTo: overviewLabel.bottomAnchor,
                 constant: 10),
@@ -446,10 +435,12 @@ private extension MovieDetailViewController {
             trailerButton.bottomAnchor.constraint(
                 equalTo: area.bottomAnchor,
                 constant: -10)
-        ])
-
-        let collectionView = [backgroundImageView, posterImageView, infoLabel, starImageView, ratingLabel, clockImageView, runTimeLabel, genresCollectionView!, overviewLabel, trailerButton]
-
+        ]
+        
+        NSLayoutConstraint.activate(overviewConstraint)
+        
+        collectionView.append(genresCollectionView)
+        
         collectionView.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
         
     }
@@ -492,7 +483,6 @@ extension MovieDetailViewController: UICollectionViewDelegateFlowLayout {
 extension MovieDetailViewController {
     
     enum Constants {
-        
         static let collectionCellIdentifier = "CellCollection"
     }
 }
