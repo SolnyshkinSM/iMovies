@@ -321,7 +321,9 @@ private extension MovieTableViewCell {
         collectionView.append(stackViewTitle)
         collectionView.append(stackViewDetail)
         
-        collectionView.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+        for item in collectionView {
+            item.translatesAutoresizingMaskIntoConstraints = false
+        }   
                 
     }
 }
