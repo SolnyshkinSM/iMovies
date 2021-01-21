@@ -16,7 +16,7 @@ extension UIImageView {
     
     func loadData(url: URL, forMovie movie: Movie?) {
         
-        DispatchQueue.global().async { [weak self] in
+        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
             
             guard let self = self,
                 let data = try? Data(contentsOf: url),
