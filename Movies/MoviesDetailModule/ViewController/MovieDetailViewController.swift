@@ -137,11 +137,18 @@ final class MovieDetailViewController: UIViewController {
     
     private func setPoster(object: DetailModel) {
         
-        if let posterPath = object.poster_path,
-            let url = URL(string: Url.urlPoster + posterPath) {
-            backgroundImageView.loadData(url: url, forMovie: movie)
+        if let movie = movie, let image = cacheImage.object(forKey: movie) as? UIImage {
+            backgroundImageView.image = image
             backgroundImageView.toApplyBlurEffect()
-            posterImageView.loadData(url: url, forMovie: movie)
+            posterImageView.image = image
+        } else {
+            
+            if let posterPath = object.poster_path,
+                let url = URL(string: Url.urlPoster + posterPath) {
+                backgroundImageView.loadData(url: url, forMovie: movie)
+                backgroundImageView.toApplyBlurEffect()
+                posterImageView.loadData(url: url, forMovie: movie)
+            }
         }
     }
     
