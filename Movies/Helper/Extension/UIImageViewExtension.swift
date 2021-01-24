@@ -26,8 +26,12 @@ extension UIImageView {
                 cacheImage.setObject(image as AnyObject, forKey: movie)
             }
             
+            let imageUrl = url
+            
             DispatchQueue.main.async {
-                self.image = image
+                if imageUrl == url {
+                    self.image = image
+                }
             }
         }
     }
