@@ -12,6 +12,8 @@ import Foundation
 
 final class NetworkLayer: INetworkLayer {
     
+    static let shared = NetworkLayer()
+    
     func getData<T: Decodable>(url: URL, completion: @escaping (T) -> Void) {
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in

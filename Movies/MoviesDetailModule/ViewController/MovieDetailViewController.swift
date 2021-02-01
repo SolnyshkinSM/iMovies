@@ -21,8 +21,6 @@ final class MovieDetailViewController: UIViewController {
     
     // MARK: - Private properties
     
-    private let networkLayer = NetworkLayer()
-    
     private var movieDetail: DetailModel! {
         didSet { set(detailModel: movieDetail) }
     }
@@ -60,7 +58,7 @@ final class MovieDetailViewController: UIViewController {
         let urlString = Url.urlDetail + String(selectIdTwo) + "?api_key=" + Url.apiKey
         
         if let url = URL.init(string: urlString) {
-            networkLayer.getData(url: url) { [weak self] (item: DetailModel) in
+            NetworkLayer.shared.getData(url: url) { [weak self] (item: DetailModel) in
                 
                 guard let self = self else { return }
                 
@@ -78,7 +76,7 @@ final class MovieDetailViewController: UIViewController {
         let urlString = Url.urlDetail + String(selectIdTwo) + "/videos?api_key=" + Url.apiKey
         
         if let url = URL.init(string: urlString) {
-            networkLayer.getData(url: url) { [weak self] (items: Trailers) in
+            NetworkLayer.shared.getData(url: url) { [weak self] (items: Trailers) in
                 
                 guard let self = self else { return }
                 

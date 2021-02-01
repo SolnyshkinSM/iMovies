@@ -20,8 +20,6 @@ final class MovieViewController: UIViewController {
     
     private var numberPage = 1 { didSet { loadData() } }
     
-    private let networkLayer = NetworkLayer()
-    
     private lazy var results = Results()
     
     private let movieTableView = UITableView()
@@ -41,7 +39,7 @@ final class MovieViewController: UIViewController {
     private func loadData() {
         
         if let url = URL(string: Url.urlPopularMovies + "&page=\(numberPage)") {
-            networkLayer.getData(url: url) { [weak self] (items: Results) in
+            NetworkLayer.shared.getData(url: url) { [weak self] (items: Results) in
                 
                 guard let self = self else { return }
                 
@@ -181,7 +179,7 @@ extension MovieViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         cell.transform = CGAffineTransform(translationX: movieTableView.bounds.size.width, y: 0)
-        UIView.animate(withDuration: 1.5, delay: 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
+        UIView.animate(withDuration: 0.7, delay: 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
             cell.transform = CGAffineTransform(translationX: 0, y: 0)
         }, completion: nil)
     }
