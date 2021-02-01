@@ -45,6 +45,7 @@ SafariServices:
 Pattern:
 - Coordinator
 - Singletone
+- Factory
 
 API:
 - https://developers.themoviedb.org/    

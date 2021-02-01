@@ -30,14 +30,14 @@ final class MovieDetailViewController: UIViewController {
     
     private var genresCollectionView: UICollectionView!
     
-    private let posterImageView = UIImageView()
-    private let backgroundImageView = UIImageView()
-    private let starImageView = UIImageView()
-    private let clockImageView = UIImageView()
-    private let runTimeLabel = UILabel()
-    private let infoLabel = UILabel()
-    private let overviewLabel = UILabel()
-    private let ratingLabel = UILabel()
+    private let posterImageView = FactoryImageView.shared.createImageView()
+    private let backgroundImageView = FactoryImageView.shared.createImageView()
+    private let starImageView = FactoryImageView.shared.createImageView()
+    private let clockImageView = FactoryImageView.shared.createImageView()
+    private let runTimeLabel = FactoryLabel.shared.createLabel(fontOfSize: 15, andColor: .black)
+    private let infoLabel = FactoryLabel.shared.createLabel(fontOfSize: 20, andColor: .black)
+    private let overviewLabel = FactoryLabel.shared.createLabel(fontOfSize: 15, andColor: .gray)
+    private let ratingLabel = FactoryLabel.shared.createLabel(fontOfSize: 15, andColor: .black)
     private let trailerButton = UIButton()
     
     private lazy var collectionView = [backgroundImageView, posterImageView, starImageView, infoLabel, clockImageView, runTimeLabel, ratingLabel, overviewLabel, trailerButton]
@@ -179,14 +179,9 @@ private extension MovieDetailViewController {
         
         addViews()
         
-        configureBackgroundImageView()
-        configureStarImageView()
         configurePosterImageView()
         configureInfoLabel()
-        configureClockImageView()
-        configureRunTimeLabel()
         configureOverviewLabel()
-        configureRatingLabel()
         configureTrailerButton()
         
         configureGenresCollectionView()
@@ -212,32 +207,11 @@ private extension MovieDetailViewController {
     func addViews() {
         collectionView.forEach(view.addSubview)
     }
-    
-    func configureBackgroundImageView() {
-        backgroundImageView.contentMode = .scaleAspectFill
-        backgroundImageView.clipsToBounds = true
-        backgroundImageView.sizeToFit()
-    }
-    
+        
     func configurePosterImageView() {
-        posterImageView.contentMode = .scaleAspectFit
-        posterImageView.clipsToBounds = true
         posterImageView.layer.cornerRadius = 20
-        posterImageView.sizeToFit()
     }
-    
-    func configureStarImageView() {
-        starImageView.contentMode = .scaleAspectFit
-        starImageView.clipsToBounds = true
-        starImageView.sizeToFit()
-    }
-    
-    func configureClockImageView() {
-        clockImageView.contentMode = .scaleAspectFit
-        clockImageView.clipsToBounds = true
-        clockImageView.sizeToFit()
-    }
-    
+        
     func configureGenresCollectionView() {
         
         let layout = UICollectionViewFlowLayout()
@@ -259,26 +233,12 @@ private extension MovieDetailViewController {
     }
     
     func configureInfoLabel() {
-        infoLabel.font = .boldSystemFont(ofSize: 20)
         infoLabel.textAlignment = .center
         infoLabel.numberOfLines = 0
-        infoLabel.sizeToFit()
     }
     
     func configureOverviewLabel() {
-        overviewLabel.textColor = .gray
         overviewLabel.numberOfLines = 0
-        overviewLabel.sizeToFit()
-    }
-    
-    func configureRatingLabel() {
-        ratingLabel.font = .boldSystemFont(ofSize: 15)
-        ratingLabel.sizeToFit()
-    }
-    
-    func configureRunTimeLabel() {
-        runTimeLabel.font = .boldSystemFont(ofSize: 15)
-        runTimeLabel.sizeToFit()
     }
     
     func configureTrailerButton() {

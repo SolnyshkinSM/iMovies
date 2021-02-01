@@ -14,14 +14,14 @@ final class MovieTableViewCell: UITableViewCell {
     
     // MARK: - Private properties
     
-    private let posterImageView = UIImageView()
-    private let flagImageView = UIImageView()
-    private let starImageView = UIImageView()
-    private let titleLabel = UILabel()
-    private let releaseDateLabel = UILabel()
-    private let languageLabel = UILabel()
-    private let voteLabel = UILabel()
-    private let ratingLabel = UILabel()
+    private let posterImageView = FactoryImageView.shared.createImageView()
+    private let flagImageView = FactoryImageView.shared.createImageView()
+    private let starImageView = FactoryImageView.shared.createImageView()
+    private let titleLabel = FactoryLabel.shared.createLabel(fontOfSize: 20, andColor: .black)
+    private let releaseDateLabel = FactoryLabel.shared.createLabel(fontOfSize: 18, andColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
+    private let languageLabel = FactoryLabel.shared.createLabel(fontOfSize: 14, andColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
+    private let voteLabel = FactoryLabel.shared.createLabel(fontOfSize: 14, andColor: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1))
+    private let ratingLabel = FactoryLabel.shared.createLabel(fontOfSize: 20, andColor: .black)
     
     private lazy var collectionView = [posterImageView, flagImageView, starImageView, ratingLabel]
         
@@ -128,13 +128,8 @@ private extension MovieTableViewCell {
         
         configureTitleLabel()
         configurePosterImageView()
-        configureFlagImageView()
-        configureStarImageView()
         configureReleaseLabel()
-        configureLanguageLabel()
-        configureVoteLabel()
-        configureRatingLabel()
-                
+                       
         layout()
     }
 }
@@ -161,52 +156,16 @@ private extension MovieTableViewCell {
     }
     
     func configureTitleLabel() {
-        titleLabel.font = .boldSystemFont(ofSize: 20)
         titleLabel.numberOfLines = 0
-        titleLabel.sizeToFit()
     }
     
     func configurePosterImageView() {
-        posterImageView.contentMode = .scaleAspectFit
-        posterImageView.clipsToBounds = true
         posterImageView.layer.cornerRadius = bounds.height / 4
-        posterImageView.sizeToFit()
     }
-    
-    func configureFlagImageView() {
-        flagImageView.contentMode = .scaleAspectFit
-        flagImageView.clipsToBounds = true
-        flagImageView.sizeToFit()
-    }
-    
-    func configureStarImageView() {
-        starImageView.contentMode = .scaleAspectFit
-        starImageView.clipsToBounds = true
-        starImageView.sizeToFit()
-    }
-    
+        
     func configureReleaseLabel() {
-        releaseDateLabel.font = .boldSystemFont(ofSize: 18)
         releaseDateLabel.adjustsFontSizeToFitWidth = true
         releaseDateLabel.minimumScaleFactor = 0.1
-        releaseDateLabel.sizeToFit()
-    }
-    
-    func configureLanguageLabel() {
-        languageLabel.font = .boldSystemFont(ofSize: 14)
-        languageLabel.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-        languageLabel.sizeToFit()
-    }
-    
-    func configureVoteLabel() {
-        voteLabel.font = .boldSystemFont(ofSize: 14)
-        voteLabel.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-        voteLabel.sizeToFit()
-    }
-    
-    func configureRatingLabel() {
-        ratingLabel.font = .boldSystemFont(ofSize: 20)
-        ratingLabel.sizeToFit()
     }
 }
 

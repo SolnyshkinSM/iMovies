@@ -22,7 +22,7 @@ final class GenreCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Private properties
     
-    private let infoLabel = UILabel()
+    private let infoLabel = FactoryLabel.shared.createLabel(fontOfSize: 10, andColor: .white)
     
     // MARK: - Initialization
     
@@ -69,10 +69,7 @@ private extension GenreCollectionViewCell {
     }
     
     func configureInfoLabel() {
-        infoLabel.font = .boldSystemFont(ofSize: 10)
         infoLabel.textAlignment = .center
-        infoLabel.textColor = .white
-        infoLabel.sizeToFit()
     }
 }
 
